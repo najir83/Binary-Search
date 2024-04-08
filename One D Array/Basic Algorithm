@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+void print(vector<int>v) {
+    for(auto it:v)cout<<it<<" ";
+
+    cout<<endl;
+}
+//Binary Search 1
+//Itertative
+/*void findElement(vector<int>v,int tg) {
+    int l,m,h;
+    h=v.size()-1;
+    l=0;
+    int ans=-1;
+    while(l<=h) {
+        m=(l+h)/2;
+        if(v[m]==tg) {
+            ans=m;
+            break;
+        }
+        else if(v[m]>tg) {
+            h=m-1;
+        }
+        else {
+
+            l=m+1;
+        }
+    }
+    cout<<"find "<<tg<<" : "<<ans<<endl;
+
+}*/
+//Recursive
+void findElement(vector<int>v,int tg,int l,int h) {
+    if(l>h) {
+        cout<<-1<<endl;
+        return ;
+    }
+    int m=(l+h)/2;
+    if(v[m]==tg) {
+        cout<<m<<endl;
+        return;
+    }
+    else if(v[m]>tg) {
+        h=m-1;
+        findElement(v,tg,l,h);
+    }
+    else {
+
+        l=m+1;
+        findElement(v,tg,l,h);
+    }
+}
+
+int main() {
+    vector<int>v= {2,3,6,7,12,16,17};
+    //  sort(v.begin(),v.end());
+    print(v);
+    findElement(v,13,0,v.size()-1);
+    // findElement(v,2);
+
+    return 0;
+}
